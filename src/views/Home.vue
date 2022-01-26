@@ -1,9 +1,13 @@
 <template>
   <div class="home">
-    <h1>This is a Vue app made to showcase my work in the subject IDATT2105</h1>
+    <h1>IDATT2105</h1>
+    <h3>
+      This vue application is made to showcase my work in the subject IDATT2105,
+      full-stack app-development.
+    </h3>
   </div>
 
-  <h1>APE</h1>
+  <div><router-link to="/calculator">clcltr</router-link></div>
 </template>
 
 <script>
@@ -16,12 +20,16 @@ export default {
 </script>
 
 <style scoped>
-h1 {
+.home {
+  width: 70%;
+  margin: auto;
   color: #f6f7eb;
+  text-align: left;
 }
-h3 {
-  margin: 40px 0 0;
+
+h1 {
 }
+
 ul {
   list-style-type: none;
   padding: 0;
