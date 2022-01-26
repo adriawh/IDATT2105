@@ -8,13 +8,10 @@
 
 <script>
 // @ is an alias to /src
-import About from "@/components/About.vue";
 
 export default {
   name: "Home",
-  components: {
-    About,
-  },
+  components: {},
 };
 </script>
 
