@@ -1,0 +1,120 @@
+.container {
+  padding: 10px;
+  margin: auto;
+  max-width: 1000px;
+  max-height: 500px;
+  display: grid;
+  gap: 30px;
+  grid-template-areas:
+    "title title"
+    "calculator log";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 5fr;
+}
+
+#calculatorTitle {
+  color: #f6f7eb;
+  text-align: left;
+  font-size: 3rem;
+  grid-area: title;
+  margin-bottom: 0;
+}
+
+.log {
+  background-color: darkgrey;
+  width: fill;
+  border-radius: 10px;
+  grid-area: log;
+  max-height: 500px;
+}
+
+ul {
+  overflow: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+ul li {
+  margin: 5px;
+  font-size: 200%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.calculator {
+  grid-area: calculator;
+}
+
+.display {
+  background-color: darkgrey;
+  margin-bottom: 10px;
+  text-align: right;
+  vertical-align: middle;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 200%;
+}
+.buttons {
+  display: grid;
+  gap: 15px;
+  background-color: #393e41;
+  grid-template-columns: repeat(4, 1fr);
+  border: 0;
+  width: fill;
+  padding: 20px;
+  border-radius: 10px;
+  margin: auto;
+}
+
+button {
+  background: #d8dca7;
+  border-radius: 10px;
+  border: none;
+  padding: 0;
+  outline-offset: 4px;
+}
+
+.front {
+  display: block;
+  padding: 15px 42px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  background: #f6f7eb;
+  color: black;
+  transform: translateY(-4px);
+  font-weight: bolder;
+  will-change: transform;
+  transition: transform 150ms;
+}
+
+.operator {
+  background: #365359;
+}
+
+.operatorFront {
+  background: #55828b;
+}
+
+button:hover .front {
+  cursor: pointer;
+  transform: translateY(-6px);
+}
+
+button:active .front {
+  transform: translateY(-2px);
+}
+
+.active .front {
+  transform: translateY(-2px);
+  background-color: #3e5f65;
+}
+
+.active {
+  pointer-events: none;
+}
+.double {
+  grid-column: span 2;
+}
