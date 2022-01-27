@@ -5,17 +5,23 @@
       This vue application is made to showcase my work in the subject IDATT2105,
       full-stack app-development.
     </h3>
-  </div>
 
-  <div><router-link to="/calculator">clcltr</router-link></div>
+    <div class="cardholder">
+      <Card
+        title="Calculator"
+        description="A simple calculator with responsive buttons"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
+import Card from "../components/Card.vue";
 // @ is an alias to /src
 
 export default {
   name: "Home",
-  components: {},
+  components: { Card },
 };
 </script>
 
