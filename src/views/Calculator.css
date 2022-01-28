@@ -22,7 +22,7 @@
 
 .log {
   background-color: darkgrey;
-  width: fill;
+  width: stretch;
   border-radius: 10px;
   grid-area: log;
   max-height: 500px;
@@ -64,7 +64,7 @@ ul li {
   background-color: #393e41;
   grid-template-columns: repeat(4, 1fr);
   border: 0;
-  width: fill;
+  width: stretch;
   padding: 20px;
   border-radius: 10px;
   margin: auto;
