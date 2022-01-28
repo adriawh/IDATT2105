@@ -1,3 +1,3 @@
-# idatt2105-fullstack_appliksjonsutvikling
+# IDATT2105
 
 Work done in the subject IDATT2105
