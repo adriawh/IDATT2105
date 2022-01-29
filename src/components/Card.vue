@@ -23,6 +23,10 @@ export default {
   height: 200px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   padding: 30px;
   display: flex;
