@@ -12,6 +12,36 @@
   grid-template-rows: 1fr 5fr;
 }
 
+.container {
+  padding: 10px;
+  margin: auto;
+  display: grid;
+  gap: 30px;
+}
+@media (max-width: 600px) {
+  .container {
+    max-width: 500px;
+    max-height: 1000px;
+    grid-template-areas:
+      "title "
+      "calculator "
+      "log";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 4fr 4fr;
+  }
+}
+@media (min-width: 601px) {
+  .container {
+    max-width: 1000px;
+    max-height: 500px;
+    grid-template-areas:
+      "title title"
+      "calculator log";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 5fr;
+  }
+}
+
 #calculatorTitle {
   color: #f6f7eb;
   text-align: left;
