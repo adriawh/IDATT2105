@@ -18,9 +18,9 @@
   display: grid;
   gap: 30px;
 }
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .container {
-    max-width: 500px;
+    max-width: 300px;
     max-height: 1000px;
     grid-template-areas:
       "title "
@@ -30,7 +30,7 @@
     grid-template-rows: 1fr 4fr 4fr;
   }
 }
-@media (min-width: 601px) {
+@media (min-width: 501px) {
   .container {
     max-width: 1000px;
     max-height: 500px;
