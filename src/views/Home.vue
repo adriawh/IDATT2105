@@ -10,6 +10,7 @@
       <Card
         title="Calculator"
         description="A simple calculator with responsive buttons"
+        link="calculator"
       />
     </div>
   </div>

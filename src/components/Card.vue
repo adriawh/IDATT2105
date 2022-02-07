@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <router-link to="/calculator">
+    <router-link :to="calculator">
       <div class="container">
         <h3>{{ title }}</h3>
         {{ description }}
@@ -13,6 +13,7 @@ export default {
   props: {
     title: String,
     description: String,
+    link: String,
   },
 };
 </script>
