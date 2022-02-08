@@ -2,6 +2,7 @@
   <div id="nav">
     <router-link to="/">About</router-link>
     <router-link to="/calculator">clcltr</router-link>
+    <router-link to="/CalcReview">CalcReview</router-link>
   </div>
   <router-view />
 </template>

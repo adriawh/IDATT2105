@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <router-link :to="calculator">
+    <router-link :to="link">
       <div class="container">
         <h3>{{ title }}</h3>
         {{ description }}
