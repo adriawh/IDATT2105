@@ -1,5 +1,13 @@
 <template>
-  <div class="container">
+  <div v-if="submitted" class="submitted">
+    <h1>Form submitted</h1>
+    <router-link to="/Calculator">
+      <div class="container">
+        <button>Back to calculator</button>
+      </div>
+    </router-link>
+  </div>
+  <div v-if="!submitted" class="form">
     <h1>Calculator feedback</h1>
 
     <form @submit.prevent="submit">
@@ -25,6 +33,7 @@
 import { useField, useForm } from "vee-validate";
 import { object, string } from "yup";
 import axios from "axios";
+import { ref } from "vue";
 
 export default {
   data() {
@@ -34,10 +43,11 @@ export default {
   },
 
   setup() {
+    var submitted = ref(false);
     const validationSchema = object({
       name: string()
         .required()
-        .matches(/^[A-ÅÆØa-æøå ]*$/, "Please enter valid name"),
+        .matches(/^[A-ÅÆØa-æøå]*$/, "Please enter valid name"),
       email: string().email("Invalid email format").required(),
       message: string().required(),
     });
@@ -56,26 +66,29 @@ export default {
           "https://my-json-server.typicode.com/adriawh/IDATT2105-fullstack_appliksjonsutvikling/user",
           values
         )
-        .then(function (response) {
+        .then((response) => {
           console.log("Response", response);
+          submitted.value = true;
         })
-        .catch(function (err) {
+        .catch((err) => {
           console.log("Error", err);
         });
     });
+
     return {
       email,
       name,
       message,
       submit,
       errors,
+      submitted,
     };
   },
 };
 </script>
 
 <style scoped>
-.container {
+.form {
   text-align: center;
   width: 70%;
   margin: auto;
