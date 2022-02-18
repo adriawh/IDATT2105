@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <label v-if="label" :for="uuid">
       {{ label }}
     </label>
@@ -48,3 +48,13 @@ export default {
   },
 };
 </script>
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+input {
+  padding: 10px;
+}
+</style>

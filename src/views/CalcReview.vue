@@ -5,7 +5,7 @@
     <form @submit.prevent="submit">
       <BaseInput label="Name" type="text" v-model="name" :error="errors.name" />
       <BaseInput
-        label="Epost"
+        label="Email"
         type="email"
         v-model.lazy="email"
         :error="errors.email"
@@ -24,6 +24,7 @@
 <script>
 import { useField, useForm } from "vee-validate";
 import { object, string } from "yup";
+import axios from "axios";
 
 export default {
   data() {
@@ -48,8 +49,19 @@ export default {
     const { value: name } = useField("name");
     const { value: email } = useField("email");
     const { value: message } = useField("message");
+
     const submit = handleSubmit((values) => {
-      console.log("submit", values);
+      axios
+        .post(
+          "https://my-json-server.typicode.com/adriawh/IDATT2105-fullstack_appliksjonsutvikling/user",
+          values
+        )
+        .then(function (response) {
+          console.log("Response", response);
+        })
+        .catch(function (err) {
+          console.log("Error", err);
+        });
     });
     return {
       email,
