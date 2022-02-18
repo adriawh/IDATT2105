@@ -1,5 +1,9 @@
 {
     "user": [
-   
+      {
+        "name": 1,
+        "email": "Post 1",
+        "message": "THIS IS TRASH"
+      }
     ]
   }
