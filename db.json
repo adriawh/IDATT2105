@@ -1,1 +1,10 @@
-
+{
+    "user": [
+      {
+          "id": 1,
+        "name": "Tester",
+        "email": "Post 1",
+        "message": "THIS IS TRASH"
+      }
+    ]
+  }
