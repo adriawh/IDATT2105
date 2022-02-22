@@ -14,7 +14,7 @@
       :aria-invalid="error ? true : false"
       :class="{ error }"
     />
-    <BaseErrorMessage v-if="error" :id="`${uuid}-error`">
+    <BaseErrorMessage :id="`${uuid}-error`">
       {{ error }}
     </BaseErrorMessage>
   </div>
@@ -41,7 +41,6 @@ export default {
   },
   setup() {
     const uuid = UniqueID().getID();
-
     return {
       uuid,
     };
@@ -51,10 +50,17 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  flex-direction: row;
-  gap: 30px;
+  flex-direction: column;
+}
+label {
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 120%;
 }
 input {
   padding: 10px;
+}
+input:invalid {
+  border-color: red;
 }
 </style>

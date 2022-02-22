@@ -24,7 +24,8 @@
         v-model="message"
         :error="errors.message"
       />
-      <button class="btn" type="submit">Submit</button>
+      <label v-if="sending">Sending</label>
+      <button v-else class="btn" type="submit">Submit</button>
     </form>
   </div>
 </template>
@@ -34,6 +35,7 @@ import { useField, useForm } from "vee-validate";
 import { object, string } from "yup";
 import axios from "axios";
 import { ref } from "vue";
+import { useStore } from "vuex";
 
 export default {
   data() {
@@ -44,6 +46,9 @@ export default {
 
   setup() {
     var submitted = ref(false);
+    var sending = ref(false);
+    const store = useStore();
+
     const validationSchema = object({
       name: string()
         .required()
@@ -60,7 +65,11 @@ export default {
     const { value: email } = useField("email");
     const { value: message } = useField("message");
 
+    name.value = store.state.name;
+    email.value = store.state.email;
+
     const submit = handleSubmit((values) => {
+      sending.value = true;
       axios
         .post(
           "https://my-json-server.typicode.com/adriawh/IDATT2105-fullstack_appliksjonsutvikling/user",
@@ -69,6 +78,8 @@ export default {
         .then((response) => {
           console.log("Response", response);
           submitted.value = true;
+          store.commit("ADD_NAME", name);
+          store.commit("ADD_EMAIL", email);
         })
         .catch((err) => {
           console.log("Error", err);
@@ -82,6 +93,7 @@ export default {
       submit,
       errors,
       submitted,
+      sending,
     };
   },
 };
@@ -97,7 +109,7 @@ export default {
 form {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+
   width: 80%;
   margin: auto;
 }

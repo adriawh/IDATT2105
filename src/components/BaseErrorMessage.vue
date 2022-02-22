@@ -14,3 +14,13 @@ export default {
   },
 };
 </script>
+<style scoped>
+p {
+  margin-top: 0;
+  min-height: 20px;
+  max-height: 20px;
+  text-align: left;
+  color: red;
+  padding: 5px;
+}
+</style>

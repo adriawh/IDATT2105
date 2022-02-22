@@ -167,7 +167,7 @@ export default {
             break;
           case "multiply":
             this.current = a * b;
-            operatorSign = "×";
+            operatorSign = "x";
             break;
         }
         this.calculations.push(
@@ -194,7 +194,7 @@ export default {
   },
 };
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 @import "./../styles/Calculator.css";
 </style>
