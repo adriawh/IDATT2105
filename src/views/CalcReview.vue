@@ -1,5 +1,5 @@
 <template>
-  <div v-if="submitted" class="submitted">
+  <div v-if="this.$store.getters.GET_IsFormSent" class="submitted">
     <h1>Form submitted</h1>
     <h3>Thank you for your feedback!</h3>
     <router-link to="/Calculator">
@@ -7,7 +7,7 @@
     </router-link>
   </div>
 
-  <div v-if="!submitted" class="form">
+  <div v-if="!this.$store.getters.GET_IsFormSent" class="form">
     <h1>Calculator feedback</h1>
 
     <form @submit.prevent="submit">
@@ -24,7 +24,7 @@
         v-model="message"
         :error="errors.message"
       />
-      <label v-if="sending">Sending</label>
+      <label class="btn" v-if="sending">Sending</label>
       <button v-else class="btn" :disabled="!isValid" type="submit">
         Submit
       </button>
@@ -50,6 +50,7 @@ export default {
     var submitted = ref(false);
     var sending = ref(false);
     const store = useStore();
+    store.commit("SET_IsFormSent", false);
 
     const validationSchema = object({
       name: string()
@@ -81,9 +82,9 @@ export default {
         )
         .then((response) => {
           console.log("Response", response);
-          submitted.value = true;
-          store.commit("ADD_NAME", name);
-          store.commit("ADD_EMAIL", email);
+          store.commit("SET_IsFormSent", true);
+          store.commit("SET_NAME", name);
+          store.commit("SET_EMAIL", email);
         })
         .catch((err) => {
           console.log("Error", err);
