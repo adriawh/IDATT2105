@@ -25,7 +25,9 @@
         :error="errors.message"
       />
       <label v-if="sending">Sending</label>
-      <button v-else class="btn" type="submit">Submit</button>
+      <button v-else class="btn" :disabled="!isValid" type="submit">
+        Submit
+      </button>
     </form>
   </div>
 </template>
@@ -97,6 +99,15 @@ export default {
       submitted,
       sending,
     };
+  },
+  computed: {
+    isValid() {
+      if (this.errors.name || this.errors.email || this.errors.message) {
+        return false;
+      } else {
+        return this.name && this.email && this.message;
+      }
+    },
   },
 };
 </script>
