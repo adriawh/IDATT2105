@@ -4,13 +4,17 @@ export default createStore({
   state: {
     name: "",
     email: "",
+    isFormSent: false,
   },
   mutations: {
-    ADD_NAME(state, name) {
+    SET_NAME(state, name) {
       state.name = name;
     },
-    ADD_EMAIL(state, email) {
+    SET_EMAIL(state, email) {
       state.email = email;
+    },
+    SET_IsFormSent(state, bool) {
+      state.isFormSent = bool;
     },
   },
   getters: {
@@ -19,6 +23,9 @@ export default createStore({
     },
     GET_NAME(state) {
       return state.name;
+    },
+    GET_IsFormSent(state) {
+      return state.isFormSent;
     },
   },
   actions: {},
