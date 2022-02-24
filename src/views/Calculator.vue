@@ -195,6 +195,4 @@ export default {
 };
 </script>
 
-<style scoped>
-@import "./../styles/Calculator.css";
-</style>
+<style scoped src="./../styles/Calculator.css" />

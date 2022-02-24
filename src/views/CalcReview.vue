@@ -1,12 +1,12 @@
 <template>
   <div v-if="submitted" class="submitted">
     <h1>Form submitted</h1>
+    <h3>Thank you for your feedback!</h3>
     <router-link to="/Calculator">
-      <div class="container">
-        <button>Back to calculator</button>
-      </div>
+      <button class="back-btn">Back to calculator</button>
     </router-link>
   </div>
+
   <div v-if="!submitted" class="form">
     <h1>Calculator feedback</h1>
 
@@ -65,8 +65,10 @@ export default {
     const { value: email } = useField("email");
     const { value: message } = useField("message");
 
-    name.value = store.state.name;
-    email.value = store.state.email;
+    if ((store.getters.GET_NAME && store.getters.GET_EMAIL) != "") {
+      name.value = store.getters.GET_NAME;
+      email.value = store.getters.GET_EMAIL;
+    }
 
     const submit = handleSubmit((values) => {
       sending.value = true;
@@ -99,25 +101,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.form {
-  text-align: center;
-  width: 70%;
-  margin: auto;
-  background-color: aliceblue;
-}
-form {
-  display: flex;
-  flex-direction: column;
-
-  width: 80%;
-  margin: auto;
-}
-
-.btn {
-  width: 150px;
-  height: 50px;
-  margin: auto;
-  cursor: pointer;
-}
-</style>
+<style scoped src="./../styles/CalcReview.css" />

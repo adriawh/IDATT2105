@@ -13,6 +13,14 @@ export default createStore({
       state.email = email;
     },
   },
+  getters: {
+    GET_EMAIL(state) {
+      return state.email;
+    },
+    GET_NAME(state) {
+      return state.name;
+    },
+  },
   actions: {},
   modules: {},
 });

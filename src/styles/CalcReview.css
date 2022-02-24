@@ -1,0 +1,35 @@
+.submitted {
+  margin-top: 100px;
+  color: #f6f7eb;
+  text-align: center;
+  font-size: 150%;
+}
+
+.form {
+  text-align: center;
+  width: 70%;
+  margin: auto;
+  background-color: aliceblue;
+  padding: 20px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+
+  width: 80%;
+  margin: auto;
+}
+
+.btn {
+  width: 150px;
+  height: 50px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.back-btn {
+  width: 150px;
+  height: 50px;
+  margin: auto;
+  cursor: pointer;
+}
