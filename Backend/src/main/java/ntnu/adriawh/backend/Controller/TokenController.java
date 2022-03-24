@@ -45,6 +45,7 @@ public class TokenController {
 
         if(foundUser == null){
             userRepository.save(new User(username, password));
+            logger.info("USER REGISTERED - " + username);
             return "User registered";
         }else {
             return "Username is taken";
@@ -63,6 +64,7 @@ public class TokenController {
 
         if(foundUser != null) {
             if (Objects.equals(foundUser.getPassword(), password)) {
+                logger.info("USER LOGGED IN - " + username);
                 return generateToken(username);
             } else {
                 return "Wrong password";
