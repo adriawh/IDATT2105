@@ -1,6 +1,6 @@
 # Frontend
 
-😎 This is a simple Vue application featuring:
+This is a simple Vue application featuring:
 
 ✅ Log in page
 
