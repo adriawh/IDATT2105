@@ -1,4 +1,4 @@
-# IDATT2105
+# IDATT2105 - Frontend
 
 Work done in the subject IDATT2105
 
