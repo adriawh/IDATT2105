@@ -50,6 +50,9 @@ body {
 #nav a.router-link-exact-active {
   color: #f6f7eb;
 }
+#nav a.router-link-exact-active a {
+  color: #f6f7eb;
+}
 .logInStatus {
   color: azure;
 }
