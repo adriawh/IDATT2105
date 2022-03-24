@@ -15,10 +15,10 @@
         </button>
 
         <button
-          @click="setOperator('divide')"
+          @click="setOperator('/')"
           class="operator"
           id="divide"
-          v-bind:class="{ active: operator == 'divide' }"
+          v-bind:class="{ active: operator == '/' }"
         >
           <span class="shadow"></span>
           <span class="edge"></span>
@@ -38,10 +38,10 @@
         </button>
 
         <button
-          @click="setOperator('multiply')"
+          @click="setOperator('*')"
           class="operator"
           id="multiply"
-          v-bind:class="{ active: operator == 'multiply' }"
+          v-bind:class="{ active: operator == '*' }"
         >
           <span class="front operatorFront">×</span>
         </button>
@@ -59,10 +59,10 @@
         </button>
 
         <button
-          @click="setOperator('minus')"
+          @click="setOperator('-')"
           class="operator"
           id="minus"
-          v-bind:class="{ active: operator == 'minus' }"
+          v-bind:class="{ active: operator == '-' }"
         >
           <span class="front operatorFront">-</span>
         </button>
@@ -80,10 +80,10 @@
         </button>
 
         <button
-          @click="setOperator('plus')"
+          @click="setOperator('+')"
           class="operator"
           id="plus"
-          v-bind:class="{ active: operator == 'plus' }"
+          v-bind:class="{ active: operator == '+' }"
         >
           <span class="front operatorFront">+</span>
         </button>
@@ -96,7 +96,7 @@
           <span class="front">.</span>
         </button>
 
-        <button @click="calculate()" class="operator double">
+        <button @click="getAnswer()" class="operator double">
           <span class="front operatorFront">=</span>
         </button>
       </div>
@@ -105,23 +105,48 @@
     <div class="log">
       <h1>Calculations</h1>
       <ul id="list">
-        <li v-for="calculation in calculations" v-bind:key="calculation">
+        <li
+          v-for="calculation in this.$store.getters.GET_CALCULATIONLOG.slice().reverse()"
+          v-bind:key="calculation"
+        >
           {{ calculation }}
         </li>
       </ul>
+      <button
+        :disabled="fetchedPrevious"
+        v-bind:class="{ fetchedPrevious: fetchedPrevious }"
+        class="logButton"
+        v-if="this.$store.getters.GET_IsLoggedIn"
+        @click="getPreviousCalculations"
+      >
+        <span v-if="!fetchedPrevious" class="front logButtonFront"
+          >Get previous calculations</span
+        >
+        <span v-else class="front logButtonFront"
+          >No calculations to fetch</span
+        >
+      </button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
       current: "0",
+      fetchedPrevious: false,
       previous: "",
       operator: null,
       hasComma: false,
       calculations: [],
+      config: {
+        headers: {
+          Authorization: "Bearer " + this.$store.getters.GET_TOKEN,
+        },
+      },
     };
   },
   methods: {
@@ -143,6 +168,72 @@ export default {
       this.operator = operator;
       this.previous = this.current;
       this.current = "0";
+    },
+
+    getPreviousCalculations() {
+      this.fetchedPrevious = true;
+      axios
+        .get("http://localhost:8888/getCalculations", this.config)
+        .then((response) => {
+          if (response.data != this.$store.getters.GET_CALCULATIONLOG) {
+            response.data.forEach((element) => {
+              this.$store.commit("ADD_CALCULATION", element);
+            });
+          }
+        });
+    },
+
+    async getAnswer() {
+      if (this.$store.getters.GET_IsLoggedIn) {
+        await axios
+          .post(
+            "http://localhost:8888/user/calculate",
+            {
+              calculation: this.previous + this.operator + this.current,
+            },
+            this.config
+          )
+          .then((response) => {
+            if (response.data.answer == null) {
+              this.current = "error";
+            } else {
+              this.$store.commit(
+                "ADD_CALCULATION",
+                this.previous +
+                  " " +
+                  this.operator +
+                  " " +
+                  this.current +
+                  " = " +
+                  response.data.answer
+              );
+              this.current = response.data.answer;
+            }
+          });
+      } else {
+        await axios
+          .post("http://localhost:8888/calculate", {
+            calculation: this.previous + this.operator + this.current,
+          })
+          .then((response) => {
+            if (response.data.answer == null) {
+              this.current = "error";
+            } else {
+              this.$store.commit(
+                "ADD_CALCULATION",
+                this.previous +
+                  " " +
+                  this.operator +
+                  " " +
+                  this.current +
+                  " = " +
+                  response.data.answer
+              );
+              this.current = response.data.answer;
+            }
+          });
+      }
+      this.operator = "";
     },
 
     calculate() {

@@ -1,10 +1,9 @@
 .container {
-  padding: 10px;
   margin: auto;
   max-width: 1000px;
   max-height: 500px;
   display: grid;
-  gap: 30px;
+  gap: 20px;
   grid-template-areas:
     "title title"
     "calculator log";
@@ -39,17 +38,21 @@
 #calculatorTitle {
   color: #f6f7eb;
   text-align: left;
-  font-size: 3rem;
+  margin-top: 0;
+  font-size: 2.5rem;
   grid-area: title;
   margin-bottom: 0;
 }
 
 .log {
   background-color: darkgrey;
-  width: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   border-radius: 10px;
+  width: 500px;
+  height: 510px;
   grid-area: log;
-  max-height: 500px;
   text-align: center;
 }
 
@@ -58,7 +61,7 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  height: 100%;
+  height: 80%;
 }
 
 ul li {
@@ -71,40 +74,51 @@ ul li {
 
 .calculator {
   grid-area: calculator;
+  display: flex;
+  width: 500px;
+  flex-direction: column;
+  height: 510px;
+  gap: 10px;
+  flex-grow: 1;
 }
 
 .display {
   background-color: darkgrey;
-  margin-bottom: 10px;
   text-align: right;
   vertical-align: middle;
   padding: 15px;
   border-radius: 10px;
   font-size: 200%;
+  height: 50px;
 }
 .buttons {
   display: grid;
-  gap: 15px;
+  flex-grow: 1;
   background-color: #393e41;
   grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
   border: 0;
-  width: stretch;
   padding: 20px;
   border-radius: 10px;
-  margin: auto;
 }
 
 button {
   background: #d8dca7;
   border-radius: 10px;
+  height: 60px;
   border: none;
   padding: 0;
   outline-offset: 4px;
 }
 
+.logButton {
+  background-color: grey;
+  margin: 20px;
+}
+
 .front {
   display: block;
-  padding: 15px 42px;
+  padding: 15px;
   border-radius: 10px;
   font-size: 1.5rem;
   background: #f6f7eb;
@@ -113,6 +127,9 @@ button {
   font-weight: bolder;
   will-change: transform;
   transition: transform 150ms;
+}
+.logButtonFront {
+  background-color: lightgrey;
 }
 
 .operator {
@@ -138,6 +155,15 @@ button:active .front {
 }
 
 .active {
+  pointer-events: none;
+}
+
+.fetchedPrevious .front {
+  transform: translateY(-2px);
+  background-color: grey;
+}
+
+.fetchedPrevious {
   pointer-events: none;
 }
 .double {
