@@ -1,4 +1,4 @@
-# IDATT2105-fullstack_appliksjonsutvikling 🍔
+# IDATT2105-Fullstack🍔
 
 🤓 I dette repoet ligger det jeg har utviklet som følge av obligatoriske øvinger i IDATT2105.
 
