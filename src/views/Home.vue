@@ -2,12 +2,12 @@
   <div class="home">
     <h1>IDATT2105</h1>
     <h3>
-      This vue application is made to showcase my work in the subject IDATT2105,
-      full-stack app-development.
+      This vue application is made to showcase my work with vue in the subject
+      IDATT2105, full-stack app-development.
       <br /><br />
-      As the course developed we set up our own spring boot rest server. Since
-      this is only local the calculator functionality does not work unless you
-      download the server and run it your self.
+      This is only the frontend part of the subject. In addition to this i have
+      set up a Spring boot rest server to keep track of users and calculations.
+      This server is only hosted localy.
     </h3>
 
     <div class="cardholder">

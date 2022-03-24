@@ -3,7 +3,7 @@
 
   <div class="feedbackContainer">
     <h4>Got feedback? Dont by shy, and send it in!</h4>
-    <router-link to="/CalcReview" class="feedback">
+    <router-link to="/CalculatorFeedback" class="feedback">
       <button @click="getPreviousCalculations" class="">
         <span class="front">Feedback</span>
       </button>
@@ -25,7 +25,7 @@ export default {
   color: #f6f7eb;
   position: absolute;
   text-align: center;
-  bottom: 20px;
+  bottom: 30px;
   left: 0;
   right: 0;
 }

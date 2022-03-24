@@ -9,13 +9,12 @@
   text-align: center;
   width: 70%;
   margin: auto;
-  background-color: aliceblue;
+  color: #f6f7eb;
   padding: 20px;
 }
 form {
   display: flex;
   flex-direction: column;
-
   width: 80%;
   margin: auto;
 }
