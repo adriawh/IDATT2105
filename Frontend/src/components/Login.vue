@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="login" v-if="!this.$store.getters.GET_IsLoggedIn">
-      <h1 v-if="signUp" class="logInStatus">Please sign up:)</h1>
+      <h1 v-if="signUp" class="logInStatus">Register new user</h1>
       <h1 class="logInStatus" v-else id="logInHeader">Please log in:)</h1>
 
       <div>
@@ -18,9 +18,13 @@
 
       <br />
 
-      <button v-if="showSignUpButton" @click="changeToSignUp">
-        <span class="front">Sign up now</span>
-      </button>
+      <div v-if="!signUp">
+        Don't have a user? Sign up now!
+        <br /><br />
+        <button @click="changeToSignUp">
+          <span class="front">Sign up now</span>
+        </button>
+      </div>
     </div>
 
     <div class="loggedIn" v-else>
@@ -73,6 +77,9 @@ export default {
       } else if (registerResponse == "Username is taken") {
         alert(registerResponse);
       }
+
+      this.username = "";
+      this.password = "";
     },
 
     changeToSignUp() {

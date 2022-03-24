@@ -21,7 +21,6 @@
 <style>
 body {
   background-color: #26292c;
-  color: #f6f7eb;
 }
 
 #app {
