@@ -4,7 +4,7 @@ This is a simple Vue application featuring:
 
 ✅ Log in page
 
-✅ Calulator
+✅ Calculator
 
 ✅ Form-based feedback for the calculator. 
 
